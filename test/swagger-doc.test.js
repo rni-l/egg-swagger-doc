@@ -44,10 +44,11 @@ describe('test/swagger-doc.test.js', () => {
     });
   });
 
-  it('check reqeust params', async () => {
+  it.only('check reqeust params', async () => {
     const result = await app.httpRequest().get('/swagger-doc');
     const { paths } = JSON.parse(result.res.text);
     const queryParames = paths['/resource2'].post.parameters[0];
+    console.log(paths['/resource2'].post.parameters)
     assert.deepEqual(queryParames, {
       $ref: '#/components/parameters/test',
     });
